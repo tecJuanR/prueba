@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body style="background-color:gray">
+	<ui:composition template="/plantillas/plantilla.xhtml">
+		<ui:define name="contenido">
+			<h:form>
+				<p />
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Identificacion" for="id" />
+					<h:inputText value="#{empleadoController.empleado.id}" />
+
+					<h:outputLabel value="Nombre" for="nombre" />
+					<h:inputText value="#{empleadoController.empleado.nombre}" />
+
+					<h:outputLabel value="Apellido" for="apellido" />
+					<h:inputText value="#{empleadoController.empleado.apellido}" />
+
+					<h:outputLabel value="Telefono" for="telefono" />
+					<h:inputText value="#{empleadoController.empleado.telefono}" />
+
+					<h:outputLabel value="Direccion" for="direccion" />
+					<h:inputText value="#{empleadoController.empleado.direccion}" />
+				</h:panelGrid>
+				<p />
+				<p />
+				<h:commandButton action="#{empleadoController.consultarEmpleados()}"
+					value="Consultar empleados" styleClass="btn btn-success"></h:commandButton>
+				<h:commandButton
+					action="#{empleadoController.consultarEmpleadoId()}"
+					value="Consultar empleado por ID" styleClass="btn btn-success"></h:commandButton>
+				<h:commandButton action="#{empleadoController.crearEmpleado()}"
+					value="Crear empleado" styleClass="btn btn-primary"></h:commandButton>
+				<h:commandButton action="#{empleadoController.editarEmpleado()}"
+					value="Actualizar empleado" styleClass="btn btn-dark"></h:commandButton>
+				<p />
+				<p />
+				<h2 align="center">
+					<h:outputText value="Lista de Empleados" />
+				</h2>
+				<p />
+				<h:dataTable value="#{empleadoController.listaEmpleados}"
+					var="empleados" styleClass="table table-striped">
+					<h:column>
+						<f:facet name="header">Identificacion</f:facet>
+						<h:outputText value="#{empleados.id}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nombre</f:facet>
+						<h:outputText value="#{empleados.nombre}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Apellido</f:facet>
+						<h:outputText value="#{empleados.apellido}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Telefono</f:facet>
+						<h:outputText value="#{empleados.telefono}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Direccion</f:facet>
+						<h:outputText value="#{empleados.direccion}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header"></f:facet>
+						<h:commandLink value="Modificar"></h:commandLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header"></f:facet>
+						<h:commandLink value="Eliminar"></h:commandLink>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
